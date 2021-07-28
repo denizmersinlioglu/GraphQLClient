@@ -3,13 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
+
+/* Begin PBXAggregateTarget section */
+		22D442D626B1840200E0EFED /* Main */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 22D442D726B1840200E0EFED /* Build configuration list for PBXAggregateTarget "Main" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = Main;
+			packageProductDependencies = (
+				22D442DB26B1844400E0EFED /* SwiftyJSON */,
+			);
+			productName = Main;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXFileReference section */
+		22D442D526B1839700E0EFED /* GraphQLClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GraphQLClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+/* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		22D442CE26B1837500E0EFED = {
 			isa = PBXGroup;
 			children = (
+				22D442D526B1839700E0EFED /* GraphQLClient.playground */,
 			);
 			sourceTree = "<group>";
 		};
@@ -20,6 +41,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					22D442D626B1840200E0EFED = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
 			};
 			buildConfigurationList = 22D442D226B1837500E0EFED /* Build configuration list for PBXProject "GrapQLClient" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -30,9 +56,13 @@
 				Base,
 			);
 			mainGroup = 22D442CE26B1837500E0EFED;
+			packageReferences = (
+				22D442DA26B1844400E0EFED /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				22D442D626B1840200E0EFED /* Main */,
 			);
 		};
 /* End PBXProject section */
@@ -50,6 +80,24 @@
 			};
 			name = Release;
 		};
+		22D442D826B1840200E0EFED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S4X4KH6498;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		22D442D926B1840200E0EFED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S4X4KH6498;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -62,7 +110,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		22D442D726B1840200E0EFED /* Build configuration list for PBXAggregateTarget "Main" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22D442D826B1840200E0EFED /* Debug */,
+				22D442D926B1840200E0EFED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22D442DA26B1844400E0EFED /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22D442DB26B1844400E0EFED /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22D442DA26B1844400E0EFED /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22D442CF26B1837500E0EFED /* Project object */;
 }
