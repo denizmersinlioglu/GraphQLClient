@@ -5,9 +5,15 @@ import SwiftyJSON
 // MARK: - ApiClient
 
 struct ApiClient {
-    private var baseURL: () -> String
-    private var accessToken: () -> String?
     
+    // MARK: Properties
+    
+    private let baseURL: () -> String
+    private let accessToken: () -> String?
+    private let logger = Logger()
+    
+    // MARK: Life Cycle
+
     init(
         baseURL: @escaping () -> String,
         accessToken: @escaping () -> String?
@@ -15,6 +21,8 @@ struct ApiClient {
         self.baseURL = baseURL
         self.accessToken = accessToken
     }
+    
+    // MARK: Methods
     
     func perform<T: JSONParsable>(_ operation: GraphQL.Operation, as: T.Type) -> AnyPublisher<T, GraphQL.Error> {
         URLSession.shared.dataTaskPublisher(for: httpRequest(for: operation))
@@ -44,6 +52,8 @@ struct ApiClient {
             .eraseToAnyPublisher()
     }
     
+    // MARK: Helpers
+    
     private func httpRequest(for operation: GraphQL.Operation) -> URLRequest {
         var urlRequest = URLRequest(url: URL(string: baseURL())!)
         urlRequest.httpMethod = "POST"
@@ -56,25 +66,28 @@ struct ApiClient {
     }
     
     private func logRequest(for operation: GraphQL.Operation) {
-        let operationString = "Operation: \(operation)"
-        let parametersString = "Parameters: \(operation.request.variables)"
-        let description = operationString + "\n" + parametersString
-        print("\nApi Request:\n///\n\(description)\n///")
+        logger.log(
+            "GraphQL Request",
+            [
+                "Operation: \(operation)",
+                "Parameters: \(operation.request.variables)",
+            ]
+        )
     }
     
     private func logResponse(
         for operation: GraphQL.Operation,
         output: URLSession.DataTaskPublisher.Output
     ) {
-        let statusString = "Status: \((output.response as? HTTPURLResponse)?.statusCode ?? 0)"
-        let operationString = "Operation: \(operation)"
-        let parametersString = "Parameters: \(operation.request.variables)"
-        let dataString = "Data: \((try? JSON(data: output.data)) ?? [:])"
-        let description = statusString
-            + "\n" + operationString
-            + "\n" + parametersString
-            + "\n" + dataString
-        print("\nApi Response:\n///\n\(description)\n///")
+        logger.log(
+            "GraphQL Response",
+            [
+                "Status: \((output.response as? HTTPURLResponse)?.statusCode ?? 0)",
+                "Operation: \(operation)",
+                "Parameters: \(operation.request.variables)",
+                "Data: \((try? JSON(data: output.data)) ?? [:])"
+            ]
+        )
     }
 }
 
@@ -158,6 +171,24 @@ enum GraphQL {
         """
     }
     
+}
+
+// MARK: - Logger
+
+struct Logger {
+
+    func log(_ info: String) {
+        print(info)
+    }
+
+    func log(_ title: String, _ info: [String]) {
+        log("\n----- \(title) -----\n\(info.joined(separator: "\n"))\n")
+    }
+
+    func log(_ title: String, _ info: String) {
+        log("\n----- \(title) -----\n\([info])\n")
+    }
+
 }
 
 // MARK: - JSONParsable

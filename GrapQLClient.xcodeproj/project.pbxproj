@@ -16,13 +16,15 @@
 			);
 			name = Main;
 			packageProductDependencies = (
-				22D442DB26B1844400E0EFED /* SwiftyJSON */,
+				228A96022715C7140072D311 /* SwiftyJSON */,
+				228A96052715C8030072D311 /* PromiseKit */,
 			);
 			productName = Main;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
+		228A96032715C77C0072D311 /* RestClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RestClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		22D442D526B1839700E0EFED /* GraphQLClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GraphQLClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
@@ -30,6 +32,7 @@
 		22D442CE26B1837500E0EFED = {
 			isa = PBXGroup;
 			children = (
+				228A96032715C77C0072D311 /* RestClient.playground */,
 				22D442D526B1839700E0EFED /* GraphQLClient.playground */,
 			);
 			sourceTree = "<group>";
@@ -57,7 +60,8 @@
 			);
 			mainGroup = 22D442CE26B1837500E0EFED;
 			packageReferences = (
-				22D442DA26B1844400E0EFED /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				228A96012715C7140072D311 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				228A96042715C8030072D311 /* XCRemoteSwiftPackageReference "PromiseKit" */,
 			);
 			projectDirPath = "";
 			projectRoot = "";
@@ -122,7 +126,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		22D442DA26B1844400E0EFED /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+		228A96012715C7140072D311 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
@@ -130,13 +134,26 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		228A96042715C8030072D311 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.16.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		22D442DB26B1844400E0EFED /* SwiftyJSON */ = {
+		228A96022715C7140072D311 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 22D442DA26B1844400E0EFED /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			package = 228A96012715C7140072D311 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		228A96052715C8030072D311 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 228A96042715C8030072D311 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
