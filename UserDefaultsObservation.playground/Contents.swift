@@ -63,7 +63,10 @@ final class KeyValueObserver<ValueType: Any>: NSObject, Observable {
         context: UnsafeMutableRawPointer?
     ) {
         if context == &self.context, keyPath == self.keyPath {
-            if !isSuspended, let change = change, let result = KeyValueObserverResult<ValueType>(change: change) {
+            if !isSuspended,
+               let change = change,
+               let result = KeyValueObserverResult<ValueType>(change: change)
+            {
                 callback(result)
             }
         } else {
