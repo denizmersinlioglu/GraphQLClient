@@ -24,6 +24,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
+		2279F372271C4B8700276354 /* UserDefaultsObservation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UserDefaultsObservation.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		228A96032715C77C0072D311 /* RestClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RestClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		22D442D526B1839700E0EFED /* GraphQLClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GraphQLClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
@@ -32,6 +33,7 @@
 		22D442CE26B1837500E0EFED = {
 			isa = PBXGroup;
 			children = (
+				2279F372271C4B8700276354 /* UserDefaultsObservation.playground */,
 				228A96032715C77C0072D311 /* RestClient.playground */,
 				22D442D526B1839700E0EFED /* GraphQLClient.playground */,
 			);
