@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		22CEBAAC2764B01700FAC11E /* Linter & Formatter */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 22CEBAAD2764B01700FAC11E /* Build configuration list for PBXAggregateTarget "Linter & Formatter" */;
+			buildPhases = (
+				22CEBAB02764B01E00FAC11E /* [Swift Format] Run */,
+				22CEBAB12764B02B00FAC11E /* [Swift Lint] Run */,
+			);
+			dependencies = (
+			);
+			name = "Linter & Formatter";
+			productName = "Linter & Formatter";
+		};
 		22D442D626B1840200E0EFED /* Main */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 22D442D726B1840200E0EFED /* Build configuration list for PBXAggregateTarget "Main" */;
@@ -16,8 +28,8 @@
 			);
 			name = Main;
 			packageProductDependencies = (
-				228A96022715C7140072D311 /* SwiftyJSON */,
 				228A96052715C8030072D311 /* PromiseKit */,
+				22CEBAAA2764A25900FAC11E /* SwiftyJSON */,
 			);
 			productName = Main;
 		};
@@ -26,6 +38,7 @@
 /* Begin PBXFileReference section */
 		2279F372271C4B8700276354 /* UserDefaultsObservation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UserDefaultsObservation.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		228A96032715C77C0072D311 /* RestClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RestClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		22CEBAAB2764A28B00FAC11E /* UserDefaultsDatabase.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UserDefaultsDatabase.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		22D442D526B1839700E0EFED /* GraphQLClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GraphQLClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
@@ -33,6 +46,7 @@
 		22D442CE26B1837500E0EFED = {
 			isa = PBXGroup;
 			children = (
+				22CEBAAB2764A28B00FAC11E /* UserDefaultsDatabase.playground */,
 				2279F372271C4B8700276354 /* UserDefaultsObservation.playground */,
 				228A96032715C77C0072D311 /* RestClient.playground */,
 				22D442D526B1839700E0EFED /* GraphQLClient.playground */,
@@ -47,12 +61,15 @@
 			attributes = {
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					22CEBAAC2764B01700FAC11E = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					22D442D626B1840200E0EFED = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
 			};
-			buildConfigurationList = 22D442D226B1837500E0EFED /* Build configuration list for PBXProject "GrapQLClient" */;
+			buildConfigurationList = 22D442D226B1837500E0EFED /* Build configuration list for PBXProject "iOSTools" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -62,18 +79,76 @@
 			);
 			mainGroup = 22D442CE26B1837500E0EFED;
 			packageReferences = (
-				228A96012715C7140072D311 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				228A96042715C8030072D311 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				22CEBAA92764A25900FAC11E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				22D442D626B1840200E0EFED /* Main */,
+				22CEBAAC2764B01700FAC11E /* Linter & Formatter */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22CEBAB02764B01E00FAC11E /* [Swift Format] Run */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Swift Format] Run";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n    swiftformat . --config .iOSTools.swiftformat --swiftversion 5.4\n\nelse\n    echo \"warning: Download by using brew. brew install swiftformat\"\nfi\n";
+		};
+		22CEBAB12764B02B00FAC11E /* [Swift Lint] Run */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Swift Lint] Run";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint lint --config .swiftlint.yml\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin XCBuildConfiguration section */
+		22CEBAAE2764B01700FAC11E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 972WZ4674N;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		22CEBAAF2764B01700FAC11E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 972WZ4674N;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		22D442D326B1837500E0EFED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -107,7 +182,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22D442D226B1837500E0EFED /* Build configuration list for PBXProject "GrapQLClient" */ = {
+		22CEBAAD2764B01700FAC11E /* Build configuration list for PBXAggregateTarget "Linter & Formatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22CEBAAE2764B01700FAC11E /* Debug */,
+				22CEBAAF2764B01700FAC11E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22D442D226B1837500E0EFED /* Build configuration list for PBXProject "iOSTools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22D442D326B1837500E0EFED /* Debug */,
@@ -128,14 +212,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		228A96012715C7140072D311 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
 		228A96042715C8030072D311 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mxcl/PromiseKit";
@@ -144,18 +220,26 @@
 				minimumVersion = 6.16.0;
 			};
 		};
+		22CEBAA92764A25900FAC11E /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		228A96022715C7140072D311 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 228A96012715C7140072D311 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
 		228A96052715C8030072D311 /* PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 228A96042715C8030072D311 /* XCRemoteSwiftPackageReference "PromiseKit" */;
 			productName = PromiseKit;
+		};
+		22CEBAAA2764A25900FAC11E /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22CEBAA92764A25900FAC11E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
