@@ -39,6 +39,7 @@
 		2279F372271C4B8700276354 /* UserDefaultsObservation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UserDefaultsObservation.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		228A96032715C77C0072D311 /* RestClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RestClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		22CEBAAB2764A28B00FAC11E /* UserDefaultsDatabase.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UserDefaultsDatabase.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		22CEBAB22764B5B700FAC11E /* Throttler.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Throttler.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		22D442D526B1839700E0EFED /* GraphQLClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GraphQLClient.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
@@ -46,6 +47,7 @@
 		22D442CE26B1837500E0EFED = {
 			isa = PBXGroup;
 			children = (
+				22CEBAB22764B5B700FAC11E /* Throttler.playground */,
 				22CEBAAB2764A28B00FAC11E /* UserDefaultsDatabase.playground */,
 				2279F372271C4B8700276354 /* UserDefaultsObservation.playground */,
 				228A96032715C77C0072D311 /* RestClient.playground */,
