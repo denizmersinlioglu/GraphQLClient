@@ -214,12 +214,11 @@ protocol LocalDatabase {
 
 	func add<T: LocalDatabaseObject>(_ objects: [T])
 	func add<T: LocalDatabaseObject>(_ object: T)
-	func write(_ operations: () -> Void)
 
 	func delete<T: LocalDatabaseObject>(_ object: T)
 	func delete<T: LocalDatabaseObject>(objects: [T])
-	func flush()
 
+	func flush()
 	func log<T: LocalDatabaseObject>(type: T.Type)
 }
 
@@ -270,7 +269,7 @@ final class UserDefaultsLocalDatabase: LocalDatabase {
 		}
 	}
 
-	// MARK: Write
+	// MARK: Add
 
 	func add<T: LocalDatabaseObject>(_ objects: [T]) {
 		let typeKey = String(describing: T.self)
@@ -300,9 +299,7 @@ final class UserDefaultsLocalDatabase: LocalDatabase {
 		else { notifier.post(T.self, .add(object)) }
 	}
 
-	func write(_ operations: () -> Void) {
-		operations()
-	}
+	// MARK: Delete
 
 	func delete<T: LocalDatabaseObject>(_ object: T) {
 		let typeKey = String(describing: T.self)
@@ -328,13 +325,13 @@ final class UserDefaultsLocalDatabase: LocalDatabase {
 		objects.forEach { notifier.post(T.self, .delete($0.id)) }
 	}
 
+	// MARK: Helpers
+
 	func flush() {
 		UserDefaults.standard.dictionaryRepresentation().keys
 			.filter { $0.contains(databaseKey) }
 			.forEach { userDefaults.setValue([:], forKey: $0) }
 	}
-
-	// MARK: Log
 
 	func log<T: LocalDatabaseObject>(type: T.Type) {
 		let typeKey = String(describing: T.self)
