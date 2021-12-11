@@ -323,12 +323,14 @@ final class UserDefaultsLocalDatabase: LocalDatabase {
 
 	// MARK: Helpers
 
+	/// Cleans out all stored objects
 	func flush() {
-		UserDefaults.standard.dictionaryRepresentation().keys
+		userDefaults.dictionaryRepresentation().keys
 			.filter { $0.contains(databaseKey) }
-			.forEach { userDefaults.setValue([:], forKey: $0) }
+			.forEach { userDefaults.removeObject(forKey: $0) }
 	}
 
+	/// Logs current state of the database to console + file.
 	func log<T: LocalDatabaseObject>(type: T.Type) {
 		let typeKey = String(describing: T.self)
 		let key = databaseKey + "_" + typeKey
@@ -373,10 +375,12 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 	let _item1 = Item(id: "1", title: "item1_updated")
 	localDatabase.add(_item1.databaseObject)
+	localDatabase.log(type: ItemDatabaseObject.self)
 }
 
 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
 	if let databaseObject = localDatabase.get(ItemDatabaseObject.self, primaryKey: "1") {
 		localDatabase.delete(databaseObject)
 	}
+	localDatabase.log(type: ItemDatabaseObject.self)
 }
