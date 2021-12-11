@@ -228,15 +228,11 @@ final class UserDefaultsLocalDatabase: LocalDatabase {
 
 	// MARK: Properties
 
-	let userDefaults = UserDefaults.standard
-	let notifier: DatabaseNotifierProtocol = DatabaseNotifier()
+	private(set) lazy var notifier: DatabaseNotifierProtocol = DatabaseNotifier()
+	private lazy var userDefaults = UserDefaults.standard
 
-	static let databaseKey = "local_database"
-	static let normalizedKey = "local_database_normalized"
-
-	private var databaseKey = UserDefaultsLocalDatabase.databaseKey
-	private var normalizedKey = UserDefaultsLocalDatabase.normalizedKey
-
+	private var databaseKey = "local_database"
+	private var normalizedKey = "local_database_normalized"
 	private var storableEntityTypes: [String] {
 		[
 			String(describing: Item.self)
